@@ -2,6 +2,7 @@ import base64
 from random import randint
 
 import cv2
+import os
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -28,6 +29,7 @@ def detect_face_user_move(request):
             with open(filename, 'wb') as f:
                 f.write(imgdata)
             img = cv2.imread(filename)
+            os.remove(filename)
             faces = face_cascade.detectMultiScale(img, 1.3, 5)
             pros = pro_cascade.detectMultiScale(img, 1.3, 5)
             if len(pros) == 0:
