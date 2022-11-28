@@ -4,3 +4,4 @@ djangorestframework==3.14.0
 markdown
 opencv-python-headless
 django-sslserver
+django-cors-headers

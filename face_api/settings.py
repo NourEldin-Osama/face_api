@@ -33,13 +33,16 @@ ALLOWED_HOSTS = ['localhost', '127.0.0.1', local_ip, ]
 # 'sslserver'
 INSTALLED_APPS = ['django.contrib.admin', 'django.contrib.auth', 'django.contrib.contenttypes',
                   'django.contrib.sessions', 'django.contrib.messages', 'django.contrib.staticfiles',
-                  'apps.face_api_app.apps.FaceApiAppConfig', 'rest_framework', ]
+                  'apps.face_api_app.apps.FaceApiAppConfig', 'rest_framework', "corsheaders", ]
 
 MIDDLEWARE = ['django.middleware.security.SecurityMiddleware', 'django.contrib.sessions.middleware.SessionMiddleware',
+              "corsheaders.middleware.CorsMiddleware",  # django-cors-headers
               'django.middleware.common.CommonMiddleware', 'django.middleware.csrf.CsrfViewMiddleware',
               'django.contrib.auth.middleware.AuthenticationMiddleware',
               'django.contrib.messages.middleware.MessageMiddleware',
               'django.middleware.clickjacking.XFrameOptionsMiddleware', ]
+
+CORS_ALLOWED_ORIGINS = []  # add A list of origins that are authorized to make cross-site HTTP requests here.
 
 ROOT_URLCONF = 'face_api.urls'
 
