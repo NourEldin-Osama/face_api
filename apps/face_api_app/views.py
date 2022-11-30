@@ -1,8 +1,6 @@
 import base64
-from random import randint
-
+import numpy as np
 import cv2
-import os
 from django.shortcuts import render
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -25,11 +23,8 @@ def detect_face_user_move(request):
             data = frame_.replace('data:image/jpeg;base64,', '')
             data = data.replace(' ', '+')
             imgdata = base64.b64decode(data)
-            filename = r'media/' + F'image_{randint(1, 1000000000000)}.jpg'
-            with open(filename, 'wb') as f:
-                f.write(imgdata)
-            img = cv2.imread(filename)
-            os.remove(filename)
+            np_arr = np.fromstring(imgdata, np.uint8)
+            img = cv2.imdecode(np_arr, cv2.IMREAD_COLOR)
             faces = face_cascade.detectMultiScale(img, 1.3, 5)
             pros = pro_cascade.detectMultiScale(img, 1.3, 5)
             if len(pros) == 0:

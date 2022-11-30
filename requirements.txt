@@ -5,3 +5,4 @@ markdown
 opencv-python-headless
 django-sslserver
 django-cors-headers
+numpy
