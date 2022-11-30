@@ -42,6 +42,8 @@ MIDDLEWARE = ['django.middleware.security.SecurityMiddleware', 'django.contrib.s
               'django.middleware.clickjacking.XFrameOptionsMiddleware', ]
 
 CORS_ALLOWED_ORIGINS = []  # add A list of origins that are authorized to make cross-site HTTP requests here.
+CORS_ALLOW_ALL_ORIGINS = False  # Make this option True if and only if you want to make your api public,
+# or you don't know the origin of the request. If True, all origins will be allowed.
 
 ROOT_URLCONF = 'face_api.urls'
 
